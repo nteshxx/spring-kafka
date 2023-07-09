@@ -1,0 +1,38 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.1'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.microservice'
+version = '0.0.1'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
+	implementation 'org.apache.commons:commons-math3:3.6.1'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.kafka:spring-kafka'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.kafka:spring-kafka-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
